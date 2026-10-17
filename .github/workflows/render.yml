@@ -41,7 +41,10 @@ jobs:
         run: |
           EXTRA=""
           if [ -n "${{ inputs.frames }}" ]; then EXTRA="--frames=${{ inputs.frames }}"; fi
-          npx remotion render src/index.ts VatExplainer out/vat-video.mp4 --scale=${{ inputs.scale }} $EXTRA
+          CORES=$(nproc)
+          if [ "$CORES" -gt 4 ]; then CORES=4; fi
+          echo "Rendering with concurrency=$CORES"
+          npx remotion render src/index.ts VatExplainer out/vat-video.mp4 --scale=${{ inputs.scale }} --concurrency=$CORES $EXTRA
 
       - name: Upload video
         uses: actions/upload-artifact@v4

@@ -2,50 +2,38 @@
 export const NARRATION: Record<string, { audio: string; seconds: number }> = {
   "s01": {
     "audio": "audio/s01.mp3",
-    "seconds": 11.376
+    "seconds": 9.72
   },
   "s02": {
     "audio": "audio/s02.mp3",
-    "seconds": 11.832
+    "seconds": 15.408
   },
   "s03": {
     "audio": "audio/s03.mp3",
-    "seconds": 17.544
+    "seconds": 14.808
   },
   "s04": {
     "audio": "audio/s04.mp3",
-    "seconds": 15.768
+    "seconds": 14.76
   },
   "s05": {
     "audio": "audio/s05.mp3",
-    "seconds": 17.904
+    "seconds": 16.344
   },
   "s06": {
     "audio": "audio/s06.mp3",
-    "seconds": 21.024
+    "seconds": 17.544
   },
   "s07": {
     "audio": "audio/s07.mp3",
-    "seconds": 13.776
+    "seconds": 16.824
   },
   "s08": {
     "audio": "audio/s08.mp3",
-    "seconds": 21.528
+    "seconds": 16.272
   },
   "s09": {
     "audio": "audio/s09.mp3",
-    "seconds": 13.536
-  },
-  "s10": {
-    "audio": "audio/s10.mp3",
-    "seconds": 14.352
-  },
-  "s11": {
-    "audio": "audio/s11.mp3",
-    "seconds": 13.776
-  },
-  "s12": {
-    "audio": "audio/s12.mp3",
-    "seconds": 10.608
+    "seconds": 15.096
   }
 };

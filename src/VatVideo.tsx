@@ -9,12 +9,9 @@ import {
   S4France,
   S5ChinaStart,
   S6_1994,
-  S7Transform,
-  S8VATReform,
-  S9Rates,
-  S10Law,
-  S11Principles,
-  S12Outro,
+  S7Reform,
+  S8Law,
+  S9Outro,
 } from "./scenes";
 
 const FPS = 30;
@@ -23,17 +20,14 @@ const AUDIO_TAIL = 18;
 
 const DESIGN: { id: string; min: number; component: React.FC }[] = [
   { id: "s01", min: 300, component: S1Hook },
-  { id: "s02", min: 480, component: S2What },
-  { id: "s03", min: 540, component: S3Repeat },
-  { id: "s04", min: 450, component: S4France },
-  { id: "s05", min: 540, component: S5ChinaStart },
-  { id: "s06", min: 540, component: S6_1994 },
-  { id: "s07", min: 420, component: S7Transform },
-  { id: "s08", min: 600, component: S8VATReform },
-  { id: "s09", min: 360, component: S9Rates },
-  { id: "s10", min: 420, component: S10Law },
-  { id: "s11", min: 540, component: S11Principles },
-  { id: "s12", min: 300, component: S12Outro },
+  { id: "s02", min: 470, component: S2What },
+  { id: "s03", min: 440, component: S3Repeat },
+  { id: "s04", min: 440, component: S4France },
+  { id: "s05", min: 480, component: S5ChinaStart },
+  { id: "s06", min: 520, component: S6_1994 },
+  { id: "s07", min: 500, component: S7Reform },
+  { id: "s08", min: 470, component: S8Law },
+  { id: "s09", min: 440, component: S9Outro },
 ];
 
 export const SEGMENTS = (() => {

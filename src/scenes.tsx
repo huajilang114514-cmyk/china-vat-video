@@ -37,28 +37,36 @@ const DocCard: React.FC<{
   const e = useEnter(delay, 30);
   return (
     <div style={{ ...e, ...style }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+        <div style={{ width: 30, height: 1, backgroundColor: COLORS.gold, opacity: 0.9 }} />
+        <span style={{ fontFamily: FONT_SANS, fontSize: 18, letterSpacing: 6, color: COLORS.gold }}>
+          档案文献
+        </span>
+      </div>
       <div
         style={{
           width,
+          padding: 12,
           border: "1px solid rgba(228,180,92,0.4)",
+          borderRadius: 8,
+          background: "rgba(248,243,233,0.06)",
           boxShadow: "0 34px 90px rgba(0,0,0,0.6)",
           transform: "rotate(" + rotate + "deg)",
-          overflow: "hidden",
-          borderRadius: 4,
-          background: "#fff",
         }}
       >
-        <Img src={staticFile(src)} style={{ width: "100%", display: "block" }} />
+        <div style={{ background: "#fff", borderRadius: 2, overflow: "hidden" }}>
+          <Img src={staticFile(src)} style={{ width: "100%", display: "block" }} />
+        </div>
       </div>
       <div
         style={{
           marginTop: 16,
+          width,
           fontFamily: FONT_SANS,
-          fontSize: 22,
+          fontSize: 20,
           color: COLORS.dim,
-          letterSpacing: 1,
-          maxWidth: width,
-          lineHeight: 1.5,
+          letterSpacing: 0.5,
+          lineHeight: 1.55,
         }}
       >
         {caption}
@@ -115,7 +123,7 @@ export const S1Hook: React.FC = () => {
           <DocCard
             src="assets/crop-mof2025.jpg"
             caption="财政部《2025 年财政收支情况》：国内增值税 68,947 亿元"
-            width={520}
+            width={640}
             rotate={-2}
             delay={40}
           />
@@ -311,8 +319,8 @@ export const S4France: React.FC = () => {
             <DocCard
               src="assets/crop-france1954.jpg"
               caption="法国国家档案馆 FranceArchives · 1954 年 4 月 10 日增值税立法"
-              width={600}
-              rotate={1.5}
+              width={640}
+              rotate={1.2}
               delay={26}
             />
           </div>
@@ -374,8 +382,8 @@ export const S5ChinaStart: React.FC = () => {
             <DocCard
               src="assets/crop-1984b.jpg"
               caption="1984 年《中华人民共和国增值税条例（草案）》· 国务院公报"
-              width={540}
-              rotate={-1.5}
+              width={660}
+              rotate={-1.2}
               delay={24}
             />
           </div>
@@ -430,8 +438,8 @@ export const S6_1994: React.FC = () => {
             <DocCard
               src="assets/crop-1994.jpg"
               caption="国务院令第 134 号《中华人民共和国增值税暂行条例》（1993）"
-              width={560}
-              rotate={1.5}
+              width={660}
+              rotate={1.2}
               delay={22}
             />
           </div>
@@ -488,8 +496,8 @@ export const S7Reform: React.FC = () => {
             <DocCard
               src="assets/crop-2016.jpg"
               caption="财税〔2016〕36 号：全面推开营业税改征增值税试点的通知"
-              width={500}
-              rotate={-1.5}
+              width={640}
+              rotate={-1.2}
               delay={24}
             />
           </div>
@@ -546,8 +554,8 @@ export const S8Law: React.FC = () => {
             <DocCard
               src="assets/crop-law2024.jpg"
               caption="《中华人民共和国增值税法》· 主席令第四十一号 · 2026 年 1 月 1 日施行"
-              width={580}
-              rotate={1.5}
+              width={660}
+              rotate={1.2}
               delay={22}
             />
           </div>

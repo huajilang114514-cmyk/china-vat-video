@@ -13,9 +13,9 @@ export const COLORS = {
 };
 
 export const FONT_SANS =
-  '"Microsoft YaHei", "Noto Sans SC", "PingFang SC", "Segoe UI", sans-serif';
+  '"NotoSC", "Microsoft YaHei", "Noto Sans SC", "PingFang SC", "Segoe UI", sans-serif';
 export const FONT_NUM =
-  '"Bahnschrift", "Segoe UI Semibold", "Microsoft YaHei", sans-serif';
+  '"NotoSC", "Bahnschrift", "Segoe UI Semibold", "Microsoft YaHei", sans-serif';
 
 export const W = 1920;
 export const H = 1080;

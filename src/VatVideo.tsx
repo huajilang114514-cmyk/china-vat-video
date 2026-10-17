@@ -1,5 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import "./fonts";
 import { Backdrop, SceneDurationContext } from "./components";
 import { NARRATION } from "./narration";
 import {

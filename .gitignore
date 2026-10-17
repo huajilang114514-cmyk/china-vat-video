@@ -1,0 +1,15 @@
+node_modules/
+out/
+.tmp/
+tools/
+*.log
+gpu-dump.txt
+check-*.png
+bench*.mp4
+test-segment.mp4
+draft-*.mp4
+stills*.log
+.ghconfig/
+.ghcache/
+auth*.log
+gh-download-done.txt

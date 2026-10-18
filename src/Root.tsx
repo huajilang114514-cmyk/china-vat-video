@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { VatVideo, TOTAL_DURATION } from "./VatVideo";
 import { AccVideo, ACC_TOTAL_DURATION } from "./AccVideo";
 import { AccWideVideo, WIDE_TOTAL_DURATION } from "./AccWideVideo";
+import { VatHistVideo, HIST_TOTAL_DURATION } from "./VatHistVideo";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -27,6 +28,14 @@ export const RemotionRoot: React.FC = () => {
         id="AccountingWide"
         component={AccWideVideo}
         durationInFrames={WIDE_TOTAL_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="VatHistory"
+        component={VatHistVideo}
+        durationInFrames={HIST_TOTAL_DURATION}
         fps={30}
         width={1920}
         height={1080}

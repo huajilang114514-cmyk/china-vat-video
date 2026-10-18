@@ -5,6 +5,7 @@ import { AccVideo, ACC_TOTAL_DURATION } from "./AccVideo";
 import { AccWideVideo, WIDE_TOTAL_DURATION } from "./AccWideVideo";
 import { VatHistVideo, HIST_TOTAL_DURATION } from "./VatHistVideo";
 import { VatCnVideo, CN_TOTAL_DURATION } from "./VatCnVideo";
+import { VatCorpVideo, CORP_TOTAL_DURATION } from "./VatCorpVideo";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -45,6 +46,14 @@ export const RemotionRoot: React.FC = () => {
         id="VatChina"
         component={VatCnVideo}
         durationInFrames={CN_TOTAL_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="VatCorporate"
+        component={VatCorpVideo}
+        durationInFrames={CORP_TOTAL_DURATION}
         fps={30}
         width={1920}
         height={1080}

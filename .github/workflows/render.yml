@@ -11,6 +11,10 @@ on:
         description: "可选帧范围，如 0-299（留空渲染全片）"
         required: false
         default: ""
+      composition:
+        description: "组合 ID：VatExplainer 或 AccountingReform"
+        required: true
+        default: "VatExplainer"
 
 jobs:
   render:
@@ -44,7 +48,7 @@ jobs:
           CORES=$(nproc)
           if [ "$CORES" -gt 4 ]; then CORES=4; fi
           echo "Rendering with concurrency=$CORES"
-          npx remotion render src/index.ts VatExplainer out/vat-video.mp4 --scale=${{ inputs.scale }} --concurrency=$CORES $EXTRA
+          npx remotion render src/index.ts ${{ inputs.composition }} out/video.mp4 --scale=${{ inputs.scale }} --concurrency=$CORES $EXTRA
 
       - name: Upload video
         uses: actions/upload-artifact@v4

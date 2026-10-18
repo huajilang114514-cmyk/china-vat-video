@@ -49,7 +49,7 @@ const covers = [
     kicker: "税种系列 · 起源 / 发展 / 原理",
     title: "税种<span class='gold'>起源与发展</span>",
     sub: "增值税 · 企业所得税 · 个人所得税 · 印花税",
-    meta: "<b>7 期</b> 已上线 · 持续更新",
+    meta: "<b>9 期</b> 已上线 · 持续更新",
     series: true,
     cards: [
       { n: "增值税", y: "1918", d: "西门子 → 160 多个国家" },

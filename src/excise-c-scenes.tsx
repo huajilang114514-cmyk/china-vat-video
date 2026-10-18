@@ -19,6 +19,42 @@ const Doc: React.FC<{ src: string; width: number; caption: string; rotate?: numb
   );
 };
 
+
+const Timeline: React.FC<{ items: { y: string; l: string }[]; delay?: number }> = ({ items, delay = 20 }) => {
+  const e = useEnter(delay, 18);
+  return (
+    <div style={{ ...e, marginTop: 40, position: "relative" }}>
+      <div style={{ position: "absolute", left: 20, right: 20, top: 6, height: 1, background: "rgba(228,180,92,0.35)" }} />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        {items.map((x) => (
+          <div key={x.y} style={{ width: 210 }}>
+            <div style={{ width: 12, height: 12, borderRadius: 6, background: COLORS.gold, margin: "0 auto" }} />
+            <div style={{ marginTop: 14, textAlign: "center", fontFamily: FONT_NUM, fontSize: 26, color: COLORS.gold }}>{x.y}</div>
+            <div style={{ marginTop: 6, textAlign: "center", fontFamily: FONT_SANS, fontSize: 18, color: COLORS.muted }}>{x.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Bars: React.FC<{ items: { l: string; v: number }[]; max: number; unit?: string; delay?: number }> = ({ items, max, unit = "%", delay = 20 }) => {
+  const e = useEnter(delay, 18);
+  return (
+    <div style={{ ...e, marginTop: 30 }}>
+      {items.map((x) => (
+        <div key={x.l} style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 14 }}>
+          <div style={{ width: 220, fontFamily: FONT_SANS, fontSize: 20, color: COLORS.muted, textAlign: "right" }}>{x.l}</div>
+          <div style={{ flex: 1, height: 26, background: "rgba(255,255,255,0.06)", borderRadius: 4 }}>
+            <div style={{ width: (x.v / max) * 100 + "%", height: "100%", background: "linear-gradient(90deg, rgba(228,180,92,0.9), rgba(228,180,92,0.35))", borderRadius: 4 }} />
+          </div>
+          <div style={{ width: 100, fontFamily: FONT_NUM, fontSize: 24, color: COLORS.goldSoft }}>{x.v}{unit}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export const C1Hook: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -113,6 +149,7 @@ export const C4_2006: React.FC = () => {
         <div style={{ marginTop: 26, ...cards, fontFamily: FONT_SANS, fontSize: 21, color: COLORS.dim }}>
           同时取消护肤护发品税目。
         </div>
+        <Bars delay={24} max={16} unit=" 项" items={[{ l: "1994 年", v: 11 }, { l: "2006 年", v: 14 }]} />
       </AbsoluteFill>
     </Scene>
   );
@@ -167,6 +204,7 @@ export const C6_2015: React.FC = () => {
         <div style={{ marginTop: 26, ...rows, fontFamily: FONT_SANS, fontSize: 21, color: COLORS.dim }}>
           2015 年 2 月，电池、涂料纳入消费税，税率 4%。
         </div>
+        <Bars delay={24} max={2} unit=" 元/升" items={[{ l: "2014.11 汽油", v: 1.12 }, { l: "2014.12 汽油", v: 1.40 }, { l: "2015.01 汽油", v: 1.52 }, { l: "2015.01 柴油", v: 1.20 }]} />
       </AbsoluteFill>
     </Scene>
   );
@@ -245,6 +283,8 @@ export const C9_Data: React.FC = () => {
             </Body>
           </div>
         </div>
+        <Bars delay={26} max={40} unit="%" items={[{ l: "增值税", v: 39.1 }, { l: "企业所得税", v: 23.4 }, { l: "消费税", v: 9.6 }, { l: "个人所得税", v: 9.2 }, { l: "印花税", v: 2.4 }]} />
+        <div style={{ marginTop: 6, fontFamily: FONT_SANS, fontSize: 16, color: COLORS.dim }}>2025 年全国税收结构（占比）</div>
       </AbsoluteFill>
     </Scene>
   );

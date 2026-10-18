@@ -60,7 +60,7 @@ const html = `<!doctype html><html lang="zh"><head><meta charset="utf-8"><style>
     <div class="ghost">税</div>
     ${covers.map((f, i) => `<div class="cover c${i + 1}"><img src="file:///F:/deepseek/vat-video/out/covers/${f}" /></div>`).join("")}
   </div>
-  <div class="meta"><span><b>7 期合集</b></span><span>14 分 50 秒</span><span>2026 · 持续更新</span></div>
+  <div class="meta"><span><b>9 期合集</b></span><span>18 分 47 秒</span><span>2026 · 持续更新</span></div>
   <div class="badge">合集</div>
 </div></body></html>`;
 

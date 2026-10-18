@@ -31,6 +31,42 @@ const Photo: React.FC<{ src: string; width: number; caption: string; delay?: num
   );
 };
 
+
+const Timeline: React.FC<{ items: { y: string; l: string }[]; delay?: number }> = ({ items, delay = 20 }) => {
+  const e = useEnter(delay, 18);
+  return (
+    <div style={{ ...e, marginTop: 40, position: "relative" }}>
+      <div style={{ position: "absolute", left: 20, right: 20, top: 6, height: 1, background: "rgba(228,180,92,0.35)" }} />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        {items.map((x) => (
+          <div key={x.y} style={{ width: 210 }}>
+            <div style={{ width: 12, height: 12, borderRadius: 6, background: COLORS.gold, margin: "0 auto" }} />
+            <div style={{ marginTop: 14, textAlign: "center", fontFamily: FONT_NUM, fontSize: 26, color: COLORS.gold }}>{x.y}</div>
+            <div style={{ marginTop: 6, textAlign: "center", fontFamily: FONT_SANS, fontSize: 18, color: COLORS.muted }}>{x.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Bars: React.FC<{ items: { l: string; v: number }[]; max: number; unit?: string; delay?: number }> = ({ items, max, unit = "%", delay = 20 }) => {
+  const e = useEnter(delay, 18);
+  return (
+    <div style={{ ...e, marginTop: 30 }}>
+      {items.map((x) => (
+        <div key={x.l} style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 14 }}>
+          <div style={{ width: 220, fontFamily: FONT_SANS, fontSize: 20, color: COLORS.muted, textAlign: "right" }}>{x.l}</div>
+          <div style={{ flex: 1, height: 26, background: "rgba(255,255,255,0.06)", borderRadius: 4 }}>
+            <div style={{ width: (x.v / max) * 100 + "%", height: "100%", background: "linear-gradient(90deg, rgba(228,180,92,0.9), rgba(228,180,92,0.35))", borderRadius: 4 }} />
+          </div>
+          <div style={{ width: 100, fontFamily: FONT_NUM, fontSize: 24, color: COLORS.goldSoft }}>{x.v}{unit}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 /* ================= 国外篇 ================= */
 
 export const E1Hook: React.FC = () => {
@@ -159,6 +195,7 @@ export const E5SinTax: React.FC = () => {
             </Panel>
           ))}
         </div>
+        <Timeline delay={24} items={[{ y: "1862", l: "美国烟税" }, { y: "1920", l: "禁酒令" }, { y: "1932", l: "汽油税" }, { y: "1970s", l: "环保税" }, { y: "1991", l: "瑞典碳税" }]} />
       </AbsoluteFill>
     </Scene>
   );
@@ -185,6 +222,7 @@ export const E6Modern: React.FC = () => {
             </Panel>
           ))}
         </div>
+        <Timeline delay={24} items={[{ y: "1991", l: "瑞典碳税" }, { y: "2002", l: "爱尔兰塑料袋税" }, { y: "2014", l: "墨西哥糖税" }, { y: "2018", l: "英国软饮料税" }]} />
       </AbsoluteFill>
     </Scene>
   );
@@ -203,6 +241,8 @@ export const E7EU: React.FC = () => {
             欧盟对烟、酒、能源设最低税率，防止跨境套利；
             世界卫生组织建议，烟草税应占零售价的 75% 以上。
           </Body>
+          <Bars delay={26} max={100} unit="%" items={[{ l: "英国", v: 80 }, { l: "法国", v: 80 }, { l: "德国", v: 70 }, { l: "中国", v: 50 }, { l: "美国", v: 45 }]} />
+          <div style={{ marginTop: 8, fontFamily: FONT_SANS, fontSize: 16, color: COLORS.dim }}>烟草税占零售价比例（约，WHO 口径）</div>
         </div>
       </AbsoluteFill>
     </Scene>
@@ -229,6 +269,8 @@ export const E8Debate: React.FC = () => {
             </Panel>
           ))}
         </div>
+        <Bars delay={24} max={6} unit="%" items={[{ l: "低收入家庭", v: 4.8 }, { l: "中等收入", v: 3.0 }, { l: "高收入", v: 1.6 }]} />
+        <div style={{ marginTop: 8, fontFamily: FONT_SANS, fontSize: 16, color: COLORS.dim }}>消费税占家庭收入比重（示意）</div>
       </AbsoluteFill>
     </Scene>
   );

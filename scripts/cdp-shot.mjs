@@ -1,0 +1,13 @@
+import fs from "node:fs";
+const list = await (await fetch("http://127.0.0.1:9333/json/list")).json();
+const page = list.find((t) => t.type === "page" && t.url.includes("chatgpt.com"));
+const ws = new WebSocket(page.webSocketDebuggerUrl);
+await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej; });
+let id = 0; const pending = new Map();
+ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); } };
+const send = (method, params = {}) => new Promise((res) => { const i = ++id; pending.set(i, res); ws.send(JSON.stringify({ id: i, method, params })); });
+await send("Page.enable");
+const r = await send("Page.captureScreenshot", { format: "png" });
+fs.writeFileSync("out/chatgpt-login.png", Buffer.from(r.result.data, "base64"));
+console.log("saved out/chatgpt-login.png");
+ws.close();

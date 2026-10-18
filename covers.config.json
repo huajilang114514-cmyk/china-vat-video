@@ -1,0 +1,93 @@
+[
+  {
+    "id": "02",
+    "file": "02-增值税-国外篇",
+    "kicker": "增值税 · 国外篇",
+    "title": "增值税的<span class='gold'>前世今生</span>",
+    "sub": "1918—2026 · 从西门子到 160 多个国家",
+    "meta": "<b>第 1 期</b> · 2 分 52 秒",
+    "img": "hist-assets/siemens.jpg",
+    "cap": "格奥尔格·冯·西门子 · Wikimedia Commons · 公有领域",
+    "ghost": "1954",
+    "w169": 420,
+    "w34": 500
+  },
+  {
+    "id": "03",
+    "file": "03-增值税-中国篇",
+    "kicker": "增值税 · 中国篇",
+    "title": "增值税<span class='gold'>在中国</span>",
+    "sub": "1979—2026 · 从试点到立法",
+    "meta": "<b>第 2 期</b> · 2 分 12 秒",
+    "img": "assets/crop-1984b.jpg",
+    "cap": "1984 年《增值税条例（草案）》· 国务院公报",
+    "ghost": "1994",
+    "w169": 560,
+    "w34": 680
+  },
+  {
+    "id": "04",
+    "file": "04-企业所得税-国外篇",
+    "kicker": "企业所得税 · 国外篇",
+    "title": "企业所得税的<span class='gold'>起源</span>",
+    "sub": "1799—2024 · 从战争税单到 15% 全球最低税",
+    "meta": "<b>第 3 期</b> · 2 分 13 秒",
+    "img": "hist-assets/pitt.jpg",
+    "cap": "小威廉·皮特 · Wikimedia Commons · 公有领域",
+    "ghost": "1913",
+    "w169": 420,
+    "w34": 400
+  },
+  {
+    "id": "05",
+    "file": "05-企业所得税-中国篇",
+    "kicker": "企业所得税 · 中国篇",
+    "title": "企业所得税<span class='gold'>在中国</span>",
+    "sub": "1980—2026 · 从两套税制到一套税法",
+    "meta": "<b>第 4 期</b> · 2 分 12 秒",
+    "img": "hist-assets/crop-cit2007.jpg",
+    "cap": "2007 年《企业所得税法》· 中国政府网",
+    "ghost": "2007",
+    "w169": 560,
+    "w34": 700
+  },
+  {
+    "id": "06",
+    "file": "06-个人所得税-国外篇",
+    "kicker": "个人所得税 · 国外篇",
+    "title": "个人所得税<span class='gold'>两百年</span>",
+    "sub": "1799—2026 · 从战争税到大众税",
+    "meta": "<b>第 5 期</b> · 1 分 32 秒",
+    "img": "hist-assets/amendment16.jpg",
+    "cap": "美国第十六修正案 · 美国国家档案馆 · 公有领域",
+    "ghost": "1799",
+    "w169": 400,
+    "w34": 380
+  },
+  {
+    "id": "07",
+    "file": "07-个人所得税-中国篇",
+    "kicker": "个人所得税 · 中国篇",
+    "title": "个税<span class='gold'>四十年</span>",
+    "sub": "1980—2026 · 从 800 到 5000",
+    "meta": "<b>第 6 期</b> · 1 分 35 秒",
+    "img": "hist-assets/crop-pit2018.jpg",
+    "cap": "2018 年个税法修改决定 · 中国政府网",
+    "ghost": "2018",
+    "w169": 560,
+    "w34": 660
+  },
+  {
+    "id": "08",
+    "file": "08-印花税",
+    "kicker": "印花税 · 单期",
+    "title": "一张纸的<span class='gold'>税</span>",
+    "sub": "1604—2026 · 印花税全史",
+    "meta": "<b>第 7 期</b> · 2 分 14 秒",
+    "img": "hist-assets/stamp-roc.jpg",
+    "cap": "民国时期印花税票 · Wikimedia Commons · 公有领域",
+    "ghost": "1694",
+    "w169": 440,
+    "w34": 440
+  }
+]

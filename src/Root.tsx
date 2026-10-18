@@ -10,6 +10,8 @@ import { VatCitVideo, CIT_TOTAL_DURATION } from "./VatCitVideo";
 import { PitForeignVideo, PITF_DURATION } from "./PitForeignVideo";
 import { PitChinaVideo, PITC_DURATION } from "./PitChinaVideo";
 import { VatStampVideo, STAMP_TOTAL_DURATION } from "./VatStampVideo";
+import { ExciseForeignVideo, EXCF_DURATION } from "./ExciseForeignVideo";
+import { ExciseChinaVideo, EXCC_DURATION } from "./ExciseChinaVideo";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -73,6 +75,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PitForeign" component={PitForeignVideo} durationInFrames={PITF_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="PitChina" component={PitChinaVideo} durationInFrames={PITC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="VatStamp" component={VatStampVideo} durationInFrames={STAMP_TOTAL_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ExciseForeign" component={ExciseForeignVideo} durationInFrames={EXCF_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ExciseChina" component={ExciseChinaVideo} durationInFrames={EXCC_DURATION} fps={30} width={1920} height={1080} />
     </>
   );
 };

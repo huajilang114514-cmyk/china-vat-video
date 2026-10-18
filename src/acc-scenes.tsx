@@ -56,7 +56,7 @@ export const A1Hook: React.FC = () => {
   const t = spring({ frame: frame - 8, fps, config: { damping: 200 }, durationInFrames: 26 });
   const sub = useEnter(34, 20);
   return (
-    <Scene duration={240}>
+    <Scene duration={150}>
       <AbsoluteFill style={{ ...PAD, justifyContent: "center", alignItems: "center", textAlign: "center" }}>
         <Kicker>会计人必看 · 2026 新准则</Kicker>
         <div style={{ marginTop: 60, fontFamily: FONT_SANS, fontSize: 120, fontWeight: 700, color: COLORS.ink, letterSpacing: 4, opacity: t, transform: "translateY(" + (1 - t) * 40 + "px)" }}>
@@ -167,8 +167,57 @@ export const A3Five: React.FC = () => {
   );
 };
 
-/* 04 营业外收支真相 */
-export const A4Truth: React.FC = () => {
+/* 04 新旧利润表对比 */
+export const A4Compare: React.FC = () => {
+  const t = useEnter(4, 24);
+  const rows = useEnter(18, 16);
+  const data = [
+    { old: "营业收入 / 营业成本", neu: "经营收入 / 经营成本", tag: "更名" },
+    { old: "财务费用", neu: "拆为 利息收入、利息费用", tag: "拆分" },
+    { old: "其他收益 / 公允价值变动收益", neu: "按类别拆分（经营类 / 投资类）", tag: "重分类" },
+    { old: "营业外收入 / 营业外支出", neu: "不再单列，归入经营类别", tag: "取消单列" },
+    { old: "营业利润", neu: "经营利润 / 经营及投资利润 / 持续经营利润", tag: "重构" },
+    { old: "利润总额", neu: "持续经营利润总额 + 终止经营净利润", tag: "改列示" },
+  ];
+  return (
+    <Scene duration={430}>
+      <AbsoluteFill style={PAD}>
+        <div style={t}><Kicker>对比 · 现行 vs 征求意见稿</Kicker></div>
+        <div style={{ marginTop: 22, ...t }}>
+          <Title size={54}>利润表，改了这些项目</Title>
+        </div>
+        <div style={{ marginTop: 30, ...rows }}>
+          {data.map((r) => (
+            <div
+              key={r.old}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "12px 16px",
+                marginBottom: 9,
+                border: "1px solid rgba(228,180,92,0.22)",
+                borderRadius: 10,
+                background: "rgba(255,255,255,0.02)",
+              }}
+            >
+              <div style={{ width: 300, fontFamily: FONT_SANS, fontSize: 21, color: COLORS.dim, textDecoration: "line-through", textDecorationColor: "rgba(196,71,58,0.65)", lineHeight: 1.35 }}>{r.old}</div>
+              <div style={{ fontFamily: FONT_NUM, fontSize: 20, color: COLORS.gold }}>→</div>
+              <div style={{ flex: 1, fontFamily: FONT_SANS, fontSize: 21, color: COLORS.ink, lineHeight: 1.35 }}>{r.neu}</div>
+              <div style={{ padding: "3px 10px", border: "1px solid rgba(196,71,58,0.5)", borderRadius: 999, fontFamily: FONT_SANS, fontSize: 17, color: COLORS.redSoft, whiteSpace: "nowrap" }}>{r.tag}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 14, fontFamily: FONT_SANS, fontSize: 19, color: COLORS.dim, lineHeight: 1.5 }}>
+          一般企业利润表 · 财办会〔2025〕51号 附件 2（修订征求意见稿）
+        </div>
+      </AbsoluteFill>
+    </Scene>
+  );
+};
+
+/* 05 营业外收支真相 */
+export const A5Truth: React.FC = () => {
   const t = useEnter(4, 26);
   const left = useEnter(28, 20);
   const right = useEnter(46, 20);
@@ -216,7 +265,7 @@ export const A4Truth: React.FC = () => {
 };
 
 /* 05 管理层业绩指标 */
-export const A5MPM: React.FC = () => {
+export const A6MPM: React.FC = () => {
   const t = useEnter(4, 26);
   const chips = useEnter(26, 18);
   const body = useEnter(50, 20);
@@ -257,7 +306,7 @@ export const A5MPM: React.FC = () => {
 };
 
 /* 06 没变什么 + 科目 */
-export const A6Unchanged: React.FC = () => {
+export const A7Unchanged: React.FC = () => {
   const t = useEnter(4, 26);
   const items = useEnter(24, 18);
   const card = useEnter(70, 22);
@@ -276,12 +325,12 @@ export const A6Unchanged: React.FC = () => {
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 30, ...items, display: "flex", alignItems: "baseline", gap: 18 }}>
-          <span style={{ fontFamily: FONT_NUM, fontSize: 76, fontWeight: 700, color: COLORS.goldSoft }}>194</span>
-          <span style={{ fontFamily: FONT_SANS, fontSize: 28, color: COLORS.muted }}>个一级科目（征求意见稿）</span>
+        <div style={{ marginTop: 24, ...items, display: "flex", alignItems: "baseline", gap: 18 }}>
+          <span style={{ fontFamily: FONT_NUM, fontSize: 72, fontWeight: 700, color: COLORS.goldSoft }}>194</span>
+          <span style={{ fontFamily: FONT_SANS, fontSize: 27, color: COLORS.muted }}>个一级科目（征求意见稿）</span>
         </div>
-        <div style={{ position: "absolute", left: 80, bottom: 70, ...card }}>
-          <DocCard src="acc-assets/crop-acc35.jpg" caption="财办会〔2026〕35号：会计科目和主要账务处理修订征求意见稿（反馈截止 2026-10-30）" width={900} rotate={0.6} delay={20} />
+        <div style={{ marginTop: 16, ...card }}>
+          <DocCard src="acc-assets/crop-acc35.jpg" caption="财办会〔2026〕35号：会计科目修订征求意见稿（2026-10-30 截止）" width={840} rotate={0.4} delay={16} />
         </div>
       </AbsoluteFill>
     </Scene>
@@ -289,7 +338,7 @@ export const A6Unchanged: React.FC = () => {
 };
 
 /* 07 结尾 */
-export const A7End: React.FC = () => {
+export const A8End: React.FC = () => {
   const t = useEnter(4, 24);
   const sum = useEnter(26, 22);
   const note = useEnter(60, 18);

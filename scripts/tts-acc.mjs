@@ -3,7 +3,7 @@ import path from "node:path";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { parseFile } from "music-metadata";
 
-const VOICE = process.env.TTS_VOICE || "zh-CN-YunxiNeural";
+const VOICE = process.env.TTS_VOICE || "zh-CN-YunyangNeural";
 const lines = JSON.parse(fs.readFileSync("narration-acc.json", "utf8"));
 fs.mkdirSync("public/acc-audio", { recursive: true });
 
@@ -16,7 +16,7 @@ for (const line of lines) {
   let ok = false;
   for (let attempt = 1; attempt <= 3 && !ok; attempt++) {
     try {
-      const { audioFilePath } = await tts.toFile(path.resolve("public/acc-audio"), line.text);
+      const { audioFilePath } = await tts.toFile(path.resolve("public/acc-audio"), line.text, { rate: "+12%" });
       fs.copyFileSync(audioFilePath, target);
       fs.unlinkSync(audioFilePath);
       const meta = await parseFile(target);

@@ -12,6 +12,7 @@
     "@remotion/fonts": "^4.0.536",
     "msedge-tts": "^2.1.0",
     "music-metadata": "^12.2.1",
+    "pdf-parse": "^2.4.5",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.536"

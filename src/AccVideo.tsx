@@ -7,24 +7,26 @@ import {
   A1Hook,
   A2Docs,
   A3Five,
-  A4Truth,
-  A5MPM,
-  A6Unchanged,
-  A7End,
+  A4Compare,
+  A5Truth,
+  A6MPM,
+  A7Unchanged,
+  A8End,
 } from "./acc-scenes";
 
 const FPS = 30;
-const LEAD = 10;
-const TAIL = 20;
+const LEAD = 8;
+const TAIL = 16;
 
 const DESIGN: { id: string; min: number; component: React.FC }[] = [
-  { id: "a01", min: 240, component: A1Hook },
-  { id: "a02", min: 440, component: A2Docs },
-  { id: "a03", min: 450, component: A3Five },
-  { id: "a04", min: 450, component: A4Truth },
-  { id: "a05", min: 350, component: A5MPM },
-  { id: "a06", min: 240, component: A6Unchanged },
-  { id: "a07", min: 420, component: A7End },
+  { id: "a01", min: 150, component: A1Hook },
+  { id: "a02", min: 360, component: A2Docs },
+  { id: "a03", min: 400, component: A3Five },
+  { id: "a04", min: 400, component: A4Compare },
+  { id: "a05", min: 330, component: A5Truth },
+  { id: "a06", min: 300, component: A6MPM },
+  { id: "a07", min: 330, component: A7Unchanged },
+  { id: "a08", min: 300, component: A8End },
 ];
 
 export const ACC_SEGMENTS = (() => {

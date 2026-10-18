@@ -2,30 +2,34 @@
 export const ACC_NARRATION: Record<string, { audio: string; seconds: number }> = {
   "a01": {
     "audio": "acc-audio/a01.mp3",
-    "seconds": 5.232
+    "seconds": 4.128
   },
   "a02": {
     "audio": "acc-audio/a02.mp3",
-    "seconds": 13.992
+    "seconds": 10.056
   },
   "a03": {
     "audio": "acc-audio/a03.mp3",
-    "seconds": 14.616
+    "seconds": 11.232
   },
   "a04": {
     "audio": "acc-audio/a04.mp3",
-    "seconds": 13.992
+    "seconds": 11.208
   },
   "a05": {
     "audio": "acc-audio/a05.mp3",
-    "seconds": 10.944
+    "seconds": 8.352
   },
   "a06": {
     "audio": "acc-audio/a06.mp3",
-    "seconds": 6.768
+    "seconds": 8.736
   },
   "a07": {
     "audio": "acc-audio/a07.mp3",
-    "seconds": 13.176
+    "seconds": 11.976
+  },
+  "a08": {
+    "audio": "acc-audio/a08.mp3",
+    "seconds": 7.488
   }
 };

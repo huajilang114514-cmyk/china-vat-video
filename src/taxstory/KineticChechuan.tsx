@@ -117,11 +117,8 @@ const BRACKETS = [
 const ShotBrackets: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const start = S(2).from;
-  const end = S(4).from;
-  const local = frame - start;
-  const span = end - start;
-  const p = clamp01(local / span);
+  const span = S(4).from - S(2).from;
+  const p = clamp01(frame / span);
   const camScale = 1 + easeOutExpo(p) * 0.18;
   const camX = -easeOutExpo(p) * 140;
   return (
@@ -135,7 +132,7 @@ const ShotBrackets: React.FC = () => {
         </div>
         <div style={{ position: "absolute", left: 110, right: 110, top: 330, display: "flex", alignItems: "flex-end", gap: 26, height: 560 }}>
           {BRACKETS.map((b, i) => {
-            const s = spring({ frame: frame - start - 10 - i * 5, fps, config: { damping: 12, stiffness: 160 }, durationInFrames: 24 });
+            const s = spring({ frame: frame - 8 - i * 4, fps, config: { damping: 12, stiffness: 160 }, durationInFrames: 24 });
             const h = (b.v / 5400) * 500 * s;
             return (
               <div key={b.l} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end" }}>
@@ -157,10 +154,8 @@ const ShotBrackets: React.FC = () => {
 
 const ShotHistory: React.FC = () => {
   const frame = useCurrentFrame();
-  const start = S(4).from;
   const dur = S(4).duration;
-  const local = frame - start;
-  const p = clamp01(local / dur);
+  const p = clamp01(frame / dur);
   const years = [1951, 1986, 2007, 2012, 2018];
   const idx = Math.min(years.length - 1, Math.floor(easeOutExpo(p) * years.length * 1.2));
   const cur = years[idx];
@@ -178,19 +173,18 @@ const ShotHistory: React.FC = () => {
       {years.map((y, i) => (
         <div key={y} style={{ position: "absolute", left: 110 + (i / (years.length - 1)) * (1700), bottom: 160, width: 2, height: 40, background: i <= idx ? COLORS.gold : "rgba(255,255,255,0.2)" }} />
       ))}
-      <Burst at={start + 4} count={30} />
+      <Burst at={4} count={30} />
     </AbsoluteFill>
   );
 };
 
 const ShotData: React.FC = () => {
   const frame = useCurrentFrame();
-  const start = S(5).from;
-  const dur = S(6).from + S(6).duration - start;
-  const p = clamp01((frame - start) / dur);
+  const dur = S(6).from + S(6).duration - S(5).from;
+  const p = clamp01(frame / dur);
   const v = Math.round(easeOutExpo(p) * 1080);
   const { fps } = useVideoConfig();
-  const slam = spring({ frame: frame - start, fps, config: { damping: 10, stiffness: 200 }, durationInFrames: 22 });
+  const slam = spring({ frame, fps, config: { damping: 10, stiffness: 200 }, durationInFrames: 22 });
   return (
     <AbsoluteFill style={{ background: "#05080E", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 45%, rgba(228,180,92,0.18), transparent 62%)" }} />
@@ -198,15 +192,21 @@ const ShotData: React.FC = () => {
         <div style={{ fontFamily: FONT_NUM, fontSize: 280, fontWeight: 700, color: "#F3D08A", lineHeight: 1, textShadow: "0 0 80px rgba(228,180,92,0.35)" }}>{v}<span style={{ fontSize: 80, marginLeft: 14 }}>亿元</span></div>
         <div style={{ marginTop: 16, fontFamily: FONT_SANS, fontSize: 34, color: COLORS.muted, letterSpacing: 4 }}>2025 年全国车船税</div>
         <div style={{ marginTop: 46, display: "flex", justifyContent: "center", gap: 60 }}>
-          {["地方税", "按年缴纳", "交强险代收"].map((t, i) => <div key={t} style={{ padding: "10px 26px", border: "1px solid rgba(228,180,92,0.5)", color: "#F3D08A", fontFamily: FONT_SANS, fontSize: 26, opacity: clamp01((frame - start - 20 - i * 8) / 10) }}>{t}</div>)}
+          {["地方税", "按年缴纳", "交强险代收"].map((t, i) => <div key={t} style={{ padding: "10px 26px", border: "1px solid rgba(228,180,92,0.5)", color: "#F3D08A", fontFamily: FONT_SANS, fontSize: 26, opacity: clamp01((frame - 20 - i * 8) / 10) }}>{t}</div>)}
         </div>
       </div>
-      <Burst at={start} count={50} />
+      <Burst at={0} count={50} />
       <div style={{ position: "absolute", left: 110, bottom: 90, right: 110, display: "flex", justifyContent: "space-between", fontFamily: FONT_SANS, fontSize: 18, color: "rgba(255,255,255,0.35)" }}>
         <span>1951 牌照税</span><span>2007 合并</span><span>2012 立法</span><span>2025 数据</span>
       </div>
     </AbsoluteFill>
   );
+};
+
+const Flash: React.FC<{ at: number }> = ({ at }) => {
+  const frame = useCurrentFrame();
+  const o = Math.max(0, 1 - (frame - at) / 7);
+  return <AbsoluteFill style={{ background: "rgba(255,244,220," + o * 0.55 + ")", pointerEvents: "none" }} />;
 };
 
 export const KineticChechuan: React.FC = () => {
@@ -218,6 +218,10 @@ export const KineticChechuan: React.FC = () => {
       <Sequence from={S(2).from} durationInFrames={S(4).from - S(2).from}><ShotBrackets /></Sequence>
       <Sequence from={S(4).from} durationInFrames={S(4).duration}><ShotHistory /></Sequence>
       <Sequence from={S(5).from} durationInFrames={S(6).from + S(6).duration - S(5).from}><ShotData /></Sequence>
+      <Flash at={S(1).from} />
+      <Flash at={S(2).from} />
+      <Flash at={S(4).from} />
+      <Flash at={S(5).from} />
       {segs.map((s) => (
         <Sequence key={s.id} from={s.from} durationInFrames={s.duration}>
           {s.audio ? <Sequence from={LEAD} durationInFrames={s.duration - LEAD}><Audio src={staticFile(s.audio)} /></Sequence> : null}

@@ -119,21 +119,21 @@ const ShotBrackets: React.FC = () => {
   const { fps } = useVideoConfig();
   const span = S(4).from - S(2).from;
   const p = clamp01(frame / span);
-  const camScale = 1 + easeOutExpo(p) * 0.10;
-  const camX = -easeOutExpo(p) * 20;
+  const camScale = 1 + easeOutExpo(p) * 0.05;
+  const camX = 0;
   return (
     <AbsoluteFill style={{ overflow: "hidden", background: "#05080E" }}>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,#05080E,#0A1220)" }} />
-      <div style={{ position: "absolute", inset: 0, transform: "scale(" + camScale + ") translateX(" + camX + "px)", transformOrigin: "70% 60%" }}>
+      <div style={{ position: "absolute", inset: 0, transform: "scale(" + camScale + ") translateX(" + camX + "px)", transformOrigin: "50% 60%" }}>
         <div style={{ position: "absolute", left: 110, top: 80 }}>
           <div style={{ fontFamily: FONT_SANS, fontSize: 22, letterSpacing: 6, color: COLORS.gold }}>乘用车 · 按排量分档</div>
           <div style={{ marginTop: 12, fontFamily: FONT_SANS, fontSize: 68, fontWeight: 700, color: "#F7F2E7" }}>排量越大，税越高</div>
           <div style={{ marginTop: 8, fontFamily: FONT_SANS, fontSize: 24, color: COLORS.muted }}>1.0L 以下最低，4.0L 以上最高；新能源车船免征</div>
         </div>
-        <div style={{ position: "absolute", left: 110, right: 110, top: 330, display: "flex", alignItems: "flex-end", gap: 26, height: 560 }}>
+        <div style={{ position: "absolute", left: 110, right: 110, top: 330, display: "flex", alignItems: "flex-end", gap: 26, height: 620 }}>
           {BRACKETS.map((b, i) => {
             const s = spring({ frame: frame - 8 - i * 4, fps, config: { damping: 12, stiffness: 160 }, durationInFrames: 24 });
-            const h = (b.v / 5400) * 500 * s;
+            const h = (b.v / 5400) * 580 * s;
             return (
               <div key={b.l} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end" }}>
                 <div style={{ fontFamily: FONT_NUM, fontSize: 26, color: COLORS.goldSoft, marginBottom: 8, opacity: s }}>{b.v}</div>

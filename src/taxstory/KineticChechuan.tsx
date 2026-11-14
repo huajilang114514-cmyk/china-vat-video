@@ -143,10 +143,6 @@ const ShotBrackets: React.FC = () => {
             );
           })}
         </div>
-        <div style={{ position: "absolute", right: 120, top: 170, textAlign: "right" }}>
-          <div style={{ fontFamily: FONT_NUM, fontSize: 120, fontWeight: 700, color: "#F3D08A", lineHeight: 1 }}>5400<span style={{ fontSize: 40 }}> 元</span></div>
-          <div style={{ fontFamily: FONT_SANS, fontSize: 20, color: COLORS.muted }}>4.0L 以上年税额上限</div>
-        </div>
       </div>
     </AbsoluteFill>
   );

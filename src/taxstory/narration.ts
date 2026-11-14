@@ -85,31 +85,31 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   },
   "chechuan-b1": {
     "audio": "tax-audio/chechuan-b1.mp3",
-    "seconds": 3.48
+    "seconds": 2.784
   },
   "chechuan-b2": {
     "audio": "tax-audio/chechuan-b2.mp3",
-    "seconds": 5.664
+    "seconds": 4.536
   },
   "chechuan-b3": {
     "audio": "tax-audio/chechuan-b3.mp3",
-    "seconds": 6.504
+    "seconds": 5.208
   },
   "chechuan-b4": {
     "audio": "tax-audio/chechuan-b4.mp3",
-    "seconds": 6.624
+    "seconds": 5.328
   },
   "chechuan-b5": {
     "audio": "tax-audio/chechuan-b5.mp3",
-    "seconds": 5.832
+    "seconds": 4.68
   },
   "chechuan-b6": {
     "audio": "tax-audio/chechuan-b6.mp3",
-    "seconds": 4.152
+    "seconds": 3.336
   },
   "chechuan-b7": {
     "audio": "tax-audio/chechuan-b7.mp3",
-    "seconds": 3.576
+    "seconds": 2.856
   },
   "chengzhen-b1": {
     "audio": "tax-audio/chengzhen-b1.mp3",

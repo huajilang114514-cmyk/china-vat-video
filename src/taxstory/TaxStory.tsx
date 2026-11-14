@@ -4,7 +4,7 @@ import "../fonts";
 import { COLORS, FONT_NUM, FONT_SANS } from "../theme";
 import { TAX_NARRATION } from "./narration";
 import storiesData from "./stories.json";
-import { BarsBlock, DocuBackdrop, FactChip, HeroPhoto, Kicker, KineticTitle, PaperCard, PhotoReveal, SceneFade, Seal, StatBlock, TimelineFlow, Wipe, YearStamp, ease, useIn } from "./ui";
+import { BarsBlock, DocuBackdrop, FactChip, HeroPhoto, Kicker, KineticTitle, PaperCard, PhotoReveal, SceneFade, Seal, StatBlock, TimelineFlow, YearStamp, ease, useIn } from "./ui";
 
 type Beat = {
   id: string; kind: string; narration: string; kicker: string; title: string; body?: string;
@@ -14,9 +14,9 @@ type Story = { id: string; tax: string; en: string; title: string; subtitle: str
 const STORIES = storiesData as unknown as Story[];
 
 const FPS = 30;
-const LEAD = 6;
-const TAIL = 24;
-const MIN = 150;
+const LEAD = 4;
+const TAIL = 12;
+const MIN = 120;
 
 export const storySegments = (story: Story) => {
   let acc = 0;
@@ -35,22 +35,32 @@ export const storyDuration = (id: string) => {
   return storySegments(s).reduce((a, b) => a + b.duration, 0);
 };
 
+const Camera: React.FC<{ duration: number; children: React.ReactNode }> = ({ duration, children }) => {
+  const frame = useCurrentFrame();
+  const p = frame / Math.max(1, duration);
+  return <AbsoluteFill style={{ transform: "scale(" + (1.012 + p * 0.02) + ") translateY(" + (-p * 6) + "px)" }}>{children}</AbsoluteFill>;
+};
+
 const River: React.FC<{ story: Story; total: number }> = ({ story, total }) => {
   const frame = useCurrentFrame();
   const segs = storySegments(story);
   const p = interpolate(frame, [0, total], [0, 1], { extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
-      <div style={{ position: "absolute", left: 80, right: 80, bottom: 54, height: 2, background: "rgba(228,180,92,0.18)" }} />
-      <div style={{ position: "absolute", left: 80, width: (1760) * p, bottom: 54, height: 2, background: "linear-gradient(90deg, rgba(228,180,92,0.2), rgba(228,180,92,0.95))", boxShadow: "0 0 18px rgba(228,180,92,0.6)" }} />
-      {segs.map((s, i) => {
-        const at = (s.from / total) * 1760 + 80;
+      <div style={{ position: "absolute", left: 70, right: 70, bottom: 48, height: 1, background: "rgba(228,180,92,0.20)" }} />
+      <div style={{ position: "absolute", left: 70, width: 1780 * p, bottom: 47, height: 3, background: "linear-gradient(90deg, rgba(228,180,92,0.15), rgba(228,180,92,1))", boxShadow: "0 0 22px rgba(228,180,92,0.85)" }} />
+      {segs.map((s) => {
+        const at = (s.from / total) * 1780 + 70;
         const on = frame >= s.from;
+        const year = (s as any).year;
         return (
-          <div key={s.id} style={{ position: "absolute", left: at, bottom: 40, width: 2, height: on ? 22 : 8, background: on ? COLORS.gold : "rgba(255,255,255,0.2)" }} />
+          <React.Fragment key={s.id}>
+            <div style={{ position: "absolute", left: at, bottom: 40, width: 2, height: on ? 20 : 6, background: on ? COLORS.gold : "rgba(255,255,255,0.18)", boxShadow: on ? "0 0 12px rgba(228,180,92,0.8)" : undefined }} />
+            {year ? <div style={{ position: "absolute", left: at - 18, bottom: 68, fontFamily: FONT_NUM, fontSize: 17, color: on ? COLORS.gold : "rgba(255,255,255,0.2)", letterSpacing: 1 }}>{year}</div> : null}
+          </React.Fragment>
         );
       })}
-      <div style={{ position: "absolute", left: Math.max(80, 80 + p * 1760 - 18), bottom: 30, width: 36, height: 36, display: "flex", alignItems: "center", justifyContent: "center", color: COLORS.gold, fontFamily: FONT_SANS, fontSize: 26, textShadow: "0 0 20px rgba(228,180,92,0.9)" }}>税</div>
+      <div style={{ position: "absolute", left: Math.max(70, 70 + p * 1780 - 9), bottom: 42, width: 18, height: 18, borderRadius: 999, background: "#F3D08A", boxShadow: "0 0 24px 8px rgba(228,180,92,0.85)" }} />
     </AbsoluteFill>
   );
 };
@@ -118,13 +128,13 @@ const BeatView: React.FC<{ beat: Beat; story: Story; index: number }> = ({ beat,
   if (beat.kind === "law") {
     return (
       <AbsoluteFill style={{ padding: "120px 110px", flexDirection: "row", gap: 60, alignItems: "center" }}>
-        <PaperCard delay={6} width={520} rotate={-1.2}>
-          <div style={{ fontFamily: FONT_SANS, fontSize: 18, color: "#8A5A12", letterSpacing: 4 }}>中华人民共和国</div>
-          <div style={{ marginTop: 18, fontFamily: FONT_SANS, fontSize: 40, fontWeight: 700, color: "#1B2230", lineHeight: 1.4 }}>{beat.title}</div>
-          <div style={{ marginTop: 20, height: 1, background: "rgba(0,0,0,0.15)" }} />
-          {Array.from({ length: 5 }).map((_, i) => <div key={i} style={{ marginTop: 14, height: 10, width: (90 - i * 8) + "%", background: "rgba(27,34,48,0.16)", borderRadius: 3 }} />)}
-          <div style={{ marginTop: 26, display: "flex", justifyContent: "flex-end" }}><div style={{ width: 84, height: 84, border: "3px solid rgba(196,71,58,0.85)", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", color: "#C4473A", fontSize: 40, fontWeight: 700, transform: "rotate(-8deg)" }}>法</div></div>
-        </PaperCard>
+        <div style={{ width: 520, background: "linear-gradient(160deg, rgba(16,26,42,0.95), rgba(10,16,28,0.9))", border: "1px solid rgba(228,180,92,0.45)", borderRadius: 12, padding: 38, boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}>
+          <div style={{ fontFamily: FONT_SANS, fontSize: 17, color: COLORS.gold, letterSpacing: 5 }}>中华人民共和国</div>
+          <div style={{ marginTop: 18, fontFamily: FONT_SANS, fontSize: 40, fontWeight: 700, color: COLORS.ink, lineHeight: 1.4 }}>{beat.title}</div>
+          <div style={{ marginTop: 22, height: 1, background: "linear-gradient(90deg, rgba(228,180,92,0.6), transparent)" }} />
+          {Array.from({ length: 5 }).map((_, i) => <div key={i} style={{ marginTop: 16, height: 8, width: (90 - i * 8) + "%", background: "rgba(255,255,255,0.10)", borderRadius: 3 }} />)}
+          <div style={{ marginTop: 28, display: "flex", justifyContent: "flex-end" }}><div style={{ width: 84, height: 84, border: "3px solid rgba(196,71,58,0.85)", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", color: "#D25A4B", fontSize: 40, fontWeight: 700, transform: "rotate(-8deg)" }}>法</div></div>
+        </div>
         <div style={{ flex: 1 }}>
           <Kicker delay={2}>{beat.kicker}</Kicker>
           <div style={{ marginTop: 26, fontFamily: FONT_NUM, fontSize: 120, fontWeight: 700, color: COLORS.goldSoft, opacity: ease(frame, 8, 16) }}>{beat.year}</div>
@@ -169,9 +179,10 @@ export const TaxStory: React.FC<{ storyId: string }> = ({ storyId }) => {
       {segs.map((s, i) => (
         <Sequence key={s.id} from={s.from} durationInFrames={s.duration}>
           <SceneFade duration={s.duration}>
-            <BeatView beat={s as unknown as Beat} story={story} index={i} />
+            <Camera duration={s.duration}>
+              <BeatView beat={s as unknown as Beat} story={story} index={i} />
+            </Camera>
           </SceneFade>
-          <Wipe delay={2} />
           {s.audio ? <Sequence from={LEAD} durationInFrames={s.duration - LEAD}><Audio src={staticFile(s.audio)} /></Sequence> : null}
         </Sequence>
       ))}

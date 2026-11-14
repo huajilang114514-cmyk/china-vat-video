@@ -15,6 +15,7 @@ import { ExciseChinaVideo, EXCC_DURATION } from "./ExciseChinaVideo";
 import { TariffVideo, TARIFF_DURATION } from "./TariffVideo";
 import { TaxStory, storyDuration } from "./taxstory/TaxStory";
 import { DenseStory } from "./taxstory/DenseStory";
+import { KineticChechuan } from "./taxstory/KineticChechuan";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -94,6 +95,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TaxStory-chengjian" component={TaxStory} defaultProps={{ storyId: "chengjian" }} durationInFrames={storyDuration("chengjian")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStory-chuanbo" component={TaxStory} defaultProps={{ storyId: "chuanbo" }} durationInFrames={storyDuration("chuanbo")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStoryDense-chechuan" component={DenseStory} defaultProps={{ storyId: "chechuan" }} durationInFrames={storyDuration("chechuan")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStoryKinetic-chechuan" component={KineticChechuan} durationInFrames={storyDuration("chechuan")} fps={30} width={1920} height={1080} />
     </>
   );
 };

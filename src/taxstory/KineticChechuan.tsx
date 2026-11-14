@@ -278,7 +278,7 @@ const ShotRecap: React.FC = () => {
     <AbsoluteFill style={{ padding: "90px 110px", background: "#05080E" }}>
       <div style={{ fontFamily: FONT_SANS, fontSize: 20, letterSpacing: 6, color: COLORS.gold }}>系列回顾</div>
       <div style={{ marginTop: 8, fontFamily: FONT_SANS, fontSize: 58, fontWeight: 700, color: "#F7F2E7" }}>七个税种，七段历史</div>
-      <div style={{ position: "absolute", right: 80, top: 140, fontFamily: FONT_NUM, fontSize: 220, fontWeight: 700, color: "rgba(228,180,92,0.05)" }}>1604—2025</div>
+      <div style={{ position: "absolute", right: 80, bottom: 70, fontFamily: FONT_NUM, fontSize: 120, fontWeight: 700, color: "rgba(228,180,92,0.05)" }}>1604—2025</div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18, marginTop: 44 }}>
         {RECAP.map((r, i) => {
           const p = clamp01((frame - 8 - i * 5) / 14);
@@ -299,6 +299,15 @@ const ShotRecap: React.FC = () => {
         </div>
       </div>
       <div style={{ marginTop: 34, fontFamily: FONT_SANS, fontSize: 20, color: COLORS.dim }}>每一期，都是一个税种的来路</div>
+      <div style={{ position: "absolute", left: 110, right: 110, bottom: 150, height: 2, background: "rgba(228,180,92,0.25)" }}>
+        {[{ t: "印花税", y: "1604" }, { t: "企业所得税", y: "1799" }, { t: "个人所得税", y: "1799" }, { t: "关税", y: "1842" }, { t: "增值税", y: "1918" }, { t: "车船税", y: "1951" }, { t: "消费税", y: "1994" }].map((x, i) => (
+          <div key={x.t + x.y} style={{ position: "absolute", left: (i / 6) * 100 + "%", top: -8 }}>
+            <div style={{ width: 10, height: 10, borderRadius: 999, background: i === 5 ? COLORS.gold : "rgba(255,255,255,0.25)" }} />
+            <div style={{ marginTop: 12, transform: "translateX(-50%)", textAlign: "center", fontFamily: FONT_NUM, fontSize: 18, color: i === 5 ? COLORS.goldSoft : COLORS.dim }}>{x.y}</div>
+            <div style={{ transform: "translateX(-50%)", textAlign: "center", fontFamily: FONT_SANS, fontSize: 13, color: COLORS.dim, whiteSpace: "nowrap" }}>{x.t}</div>
+          </div>
+        ))}
+      </div>
     </AbsoluteFill>
   );
 };

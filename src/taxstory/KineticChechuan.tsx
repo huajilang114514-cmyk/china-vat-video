@@ -217,7 +217,24 @@ const ShotDetail: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ marginTop: 44, fontFamily: FONT_SANS, fontSize: 20, color: COLORS.dim }}>乘用车七档 · 商用车按质量 · 船舶按吨位 · 新能源免征</div>
+      <div style={{ display: "flex", gap: 20, marginTop: 50 }}>
+        {[
+          { t: "摩托车", v: "36—180 元/年", d: "按排量分档" },
+          { t: "挂车", v: "货车税额 50%", d: "按整备质量" },
+          { t: "拖船", v: "船舶税额 50%", d: "按净吨位" },
+          { t: "纯电动", v: "0 元", d: "免征车船税" },
+        ].map((c, i) => {
+          const pp = clamp01((frame - 42 - i * 8) / 14);
+          return (
+            <div key={c.t} style={{ flex: 1, padding: "18px 20px", borderLeft: "2px solid rgba(228,180,92,0.5)", opacity: pp, transform: "translateX(" + (1 - pp) * -20 + "px)" }}>
+              <div style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.gold }}>{c.t}</div>
+              <div style={{ fontFamily: FONT_NUM, fontSize: 30, color: COLORS.goldSoft, marginTop: 4 }}>{c.v}</div>
+              <div style={{ fontFamily: FONT_SANS, fontSize: 15, color: COLORS.dim, marginTop: 4 }}>{c.d}</div>
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ marginTop: 40, fontFamily: FONT_SANS, fontSize: 20, color: COLORS.dim }}>乘用车七档 · 商用车按质量 · 船舶按吨位 · 新能源免征</div>
     </AbsoluteFill>
   );
 };
@@ -261,7 +278,8 @@ const ShotRecap: React.FC = () => {
     <AbsoluteFill style={{ padding: "90px 110px", background: "#05080E" }}>
       <div style={{ fontFamily: FONT_SANS, fontSize: 20, letterSpacing: 6, color: COLORS.gold }}>系列回顾</div>
       <div style={{ marginTop: 8, fontFamily: FONT_SANS, fontSize: 58, fontWeight: 700, color: "#F7F2E7" }}>七个税种，七段历史</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18, marginTop: 44 }}>
+      <div style={{ position: "absolute", right: 80, top: 140, fontFamily: FONT_NUM, fontSize: 220, fontWeight: 700, color: "rgba(228,180,92,0.05)" }}>1604—2025</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18, marginTop: 44 }}>
         {RECAP.map((r, i) => {
           const p = clamp01((frame - 8 - i * 5) / 14);
           return (
@@ -274,6 +292,10 @@ const ShotRecap: React.FC = () => {
         <div style={{ border: "1px solid rgba(228,180,92,0.7)", background: "rgba(228,180,92,0.10)", padding: "20px 22px" }}>
           <div style={{ fontFamily: FONT_NUM, fontSize: 34, color: COLORS.gold }}>1951</div>
           <div style={{ fontFamily: FONT_SANS, fontSize: 26, color: COLORS.goldSoft, marginTop: 4 }}>车船税</div>
+        </div>
+        <div style={{ border: "1px dashed rgba(255,255,255,0.18)", padding: "20px 22px" }}>
+          <div style={{ fontFamily: FONT_SANS, fontSize: 20, color: COLORS.dim }}>更多税种</div>
+          <div style={{ fontFamily: FONT_SANS, fontSize: 22, color: COLORS.muted, marginTop: 8 }}>持续更新中</div>
         </div>
       </div>
       <div style={{ marginTop: 34, fontFamily: FONT_SANS, fontSize: 20, color: COLORS.dim }}>每一期，都是一个税种的来路</div>

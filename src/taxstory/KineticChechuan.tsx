@@ -151,6 +151,13 @@ const ShotBrackets: React.FC = () => {
           <div style={{ fontFamily: FONT_NUM, fontSize: 54, color: COLORS.goldSoft }}>7</div>
           <div style={{ fontFamily: FONT_SANS, fontSize: 16, color: COLORS.dim }}>档排量区间</div>
         </div>
+        <div style={{ position: "absolute", left: 110, right: 110, top: 380, height: 620, pointerEvents: "none" }}>
+          {[0, 1000, 2000, 3000, 4000, 5400].map((v) => (
+            <div key={v} style={{ position: "absolute", left: 0, right: 0, bottom: (v / 5400) * 100 + "%", borderTop: "1px dashed rgba(255,255,255,0.10)" }}>
+              <span style={{ position: "absolute", left: -54, top: -11, fontFamily: FONT_NUM, fontSize: 14, color: "rgba(255,255,255,0.3)" }}>{v}</span>
+            </div>
+          ))}
+        </div>
         <div style={{ position: "absolute", left: 110, right: 110, top: 380, display: "flex", alignItems: "flex-end", gap: 26, height: 620 }}>
           {BRACKETS.map((b, i) => {
             const s = spring({ frame: frame - 8 - i * 4, fps, config: { damping: 12, stiffness: 160 }, durationInFrames: 24 });

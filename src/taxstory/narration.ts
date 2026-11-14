@@ -85,31 +85,31 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   },
   "chechuan-b1": {
     "audio": "tax-audio/chechuan-b1.mp3",
-    "seconds": 2.784
+    "seconds": 4.128
   },
   "chechuan-b2": {
     "audio": "tax-audio/chechuan-b2.mp3",
-    "seconds": 4.536
+    "seconds": 3.96
   },
   "chechuan-b3": {
     "audio": "tax-audio/chechuan-b3.mp3",
-    "seconds": 5.208
+    "seconds": 4.2
   },
   "chechuan-b4": {
     "audio": "tax-audio/chechuan-b4.mp3",
-    "seconds": 5.328
+    "seconds": 4.344
   },
   "chechuan-b5": {
     "audio": "tax-audio/chechuan-b5.mp3",
-    "seconds": 4.68
+    "seconds": 5.28
   },
   "chechuan-b6": {
     "audio": "tax-audio/chechuan-b6.mp3",
-    "seconds": 3.336
+    "seconds": 5.736
   },
   "chechuan-b7": {
     "audio": "tax-audio/chechuan-b7.mp3",
-    "seconds": 2.856
+    "seconds": 7.128
   },
   "chengzhen-b1": {
     "audio": "tax-audio/chengzhen-b1.mp3",
@@ -334,5 +334,17 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   "chuanbo-b7": {
     "audio": "tax-audio/chuanbo-b7.mp3",
     "seconds": 4.44
+  },
+  "chechuan-b8": {
+    "audio": "tax-audio/chechuan-b8.mp3",
+    "seconds": 6.144
+  },
+  "chechuan-b9": {
+    "audio": "tax-audio/chechuan-b9.mp3",
+    "seconds": 7.896
+  },
+  "chechuan-b10": {
+    "audio": "tax-audio/chechuan-b10.mp3",
+    "seconds": 2.88
   }
 };

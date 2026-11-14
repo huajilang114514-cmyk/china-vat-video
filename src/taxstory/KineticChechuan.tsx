@@ -205,6 +205,7 @@ const ShotData: React.FC = () => {
 
 const Flash: React.FC<{ at: number }> = ({ at }) => {
   const frame = useCurrentFrame();
+  if (frame < at) return null;
   const o = Math.max(0, 1 - (frame - at) / 7);
   return <AbsoluteFill style={{ background: "rgba(255,244,220," + o * 0.55 + ")", pointerEvents: "none" }} />;
 };

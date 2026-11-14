@@ -83,6 +83,15 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TaxStory-yanye" component={TaxStory} defaultProps={{ storyId: "yanye" }} durationInFrames={storyDuration("yanye")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStory-fangchan" component={TaxStory} defaultProps={{ storyId: "fangchan" }} durationInFrames={storyDuration("fangchan")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStory-qishui" component={TaxStory} defaultProps={{ storyId: "qishui" }} durationInFrames={storyDuration("qishui")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-chechuan" component={TaxStory} defaultProps={{ storyId: "chechuan" }} durationInFrames={storyDuration("chechuan")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-chengzhen" component={TaxStory} defaultProps={{ storyId: "chengzhen" }} durationInFrames={storyDuration("chengzhen")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-ziyuan" component={TaxStory} defaultProps={{ storyId: "ziyuan" }} durationInFrames={storyDuration("ziyuan")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-gengdi" component={TaxStory} defaultProps={{ storyId: "gengdi" }} durationInFrames={storyDuration("gengdi")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-huanjing" component={TaxStory} defaultProps={{ storyId: "huanjing" }} durationInFrames={storyDuration("huanjing")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-tudi" component={TaxStory} defaultProps={{ storyId: "tudi" }} durationInFrames={storyDuration("tudi")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-chegou" component={TaxStory} defaultProps={{ storyId: "chegou" }} durationInFrames={storyDuration("chegou")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-chengjian" component={TaxStory} defaultProps={{ storyId: "chengjian" }} durationInFrames={storyDuration("chengjian")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-chuanbo" component={TaxStory} defaultProps={{ storyId: "chuanbo" }} durationInFrames={storyDuration("chuanbo")} fps={30} width={1920} height={1080} />
     </>
   );
 };

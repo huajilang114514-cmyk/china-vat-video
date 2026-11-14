@@ -13,6 +13,7 @@ import { VatStampVideo, STAMP_TOTAL_DURATION } from "./VatStampVideo";
 import { ExciseForeignVideo, EXCF_DURATION } from "./ExciseForeignVideo";
 import { ExciseChinaVideo, EXCC_DURATION } from "./ExciseChinaVideo";
 import { TariffVideo, TARIFF_DURATION } from "./TariffVideo";
+import { TaxStory, storyDuration } from "./taxstory/TaxStory";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -79,6 +80,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="ExciseForeign" component={ExciseForeignVideo} durationInFrames={EXCF_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="ExciseChina" component={ExciseChinaVideo} durationInFrames={EXCC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Tariff" component={TariffVideo} durationInFrames={TARIFF_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-yanye" component={TaxStory} defaultProps={{ storyId: "yanye" }} durationInFrames={storyDuration("yanye")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-fangchan" component={TaxStory} defaultProps={{ storyId: "fangchan" }} durationInFrames={storyDuration("fangchan")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStory-qishui" component={TaxStory} defaultProps={{ storyId: "qishui" }} durationInFrames={storyDuration("qishui")} fps={30} width={1920} height={1080} />
     </>
   );
 };

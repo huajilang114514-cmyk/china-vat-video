@@ -119,8 +119,8 @@ const ShotBrackets: React.FC = () => {
   const { fps } = useVideoConfig();
   const span = S(4).from - S(2).from;
   const p = clamp01(frame / span);
-  const camScale = 1 + easeOutExpo(p) * 0.18;
-  const camX = -easeOutExpo(p) * 140;
+  const camScale = 1 + easeOutExpo(p) * 0.10;
+  const camX = -easeOutExpo(p) * 20;
   return (
     <AbsoluteFill style={{ overflow: "hidden", background: "#05080E" }}>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,#05080E,#0A1220)" }} />

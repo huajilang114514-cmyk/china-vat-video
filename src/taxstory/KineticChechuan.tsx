@@ -75,6 +75,15 @@ const ShotHook: React.FC = () => {
           })}
         </div>
       </div>
+      <div style={{ position: "absolute", right: 90, top: 210, textAlign: "right" }}>
+        <div style={{ fontFamily: FONT_NUM, fontSize: 96, fontWeight: 700, color: "rgba(228,180,92,0.9)", lineHeight: 1 }}>70<span style={{ fontSize: 30 }}> 年</span></div>
+        <div style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.dim, letterSpacing: 3, marginTop: 4 }}>从牌照税到车船税</div>
+        <div style={{ marginTop: 26, display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-end" }}>
+          {["1951 牌照税", "1986 使用税", "2007 两税合并", "2012 车船税法", "2025 1080 亿"].map((t, i) => (
+            <div key={t} style={{ padding: "8px 14px", borderRight: "2px solid rgba(228,180,92,0.5)", fontFamily: FONT_SANS, fontSize: 19, color: i % 2 ? COLORS.muted : COLORS.goldSoft, opacity: 0.55 + i * 0.1 }}>{t}</div>
+          ))}
+        </div>
+      </div>
       <div style={{ position: "absolute", right: 90, bottom: 80, fontFamily: FONT_NUM, fontSize: 28, color: "rgba(255,255,255,0.45)", letterSpacing: 3 }}>01 / 05</div>
     </AbsoluteFill>
   );
@@ -130,7 +139,19 @@ const ShotBrackets: React.FC = () => {
           <div style={{ marginTop: 12, fontFamily: FONT_SANS, fontSize: 68, fontWeight: 700, color: "#F7F2E7" }}>排量越大，税越高</div>
           <div style={{ marginTop: 8, fontFamily: FONT_SANS, fontSize: 24, color: COLORS.muted }}>1.0L 以下最低，4.0L 以上最高；新能源车船免征</div>
         </div>
-        <div style={{ position: "absolute", left: 110, right: 110, top: 330, display: "flex", alignItems: "flex-end", gap: 26, height: 620 }}>
+        <div style={{ position: "absolute", left: 110, top: 250, display: "flex", alignItems: "center", gap: 22 }}>
+          <span style={{ fontFamily: FONT_NUM, fontSize: 40, color: COLORS.goldSoft }}>60 元</span>
+          <span style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.dim }}>最低（1.0L 以下）</span>
+          <span style={{ width: 420, height: 2, background: "linear-gradient(90deg, rgba(228,180,92,0.2), rgba(228,180,92,0.9))", boxShadow: "0 0 12px rgba(228,180,92,0.6)" }} />
+          <span style={{ fontFamily: FONT_NUM, fontSize: 40, color: COLORS.goldSoft }}>5400 元</span>
+          <span style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.dim }}>最高（4.0L 以上）</span>
+          <span style={{ fontFamily: FONT_NUM, fontSize: 30, color: "#F3D08A", marginLeft: 24 }}>×90 倍</span>
+        </div>
+        <div style={{ position: "absolute", right: 110, top: 250, textAlign: "right" }}>
+          <div style={{ fontFamily: FONT_NUM, fontSize: 54, color: COLORS.goldSoft }}>7</div>
+          <div style={{ fontFamily: FONT_SANS, fontSize: 16, color: COLORS.dim }}>档排量区间</div>
+        </div>
+        <div style={{ position: "absolute", left: 110, right: 110, top: 380, display: "flex", alignItems: "flex-end", gap: 26, height: 620 }}>
           {BRACKETS.map((b, i) => {
             const s = spring({ frame: frame - 8 - i * 4, fps, config: { damping: 12, stiffness: 160 }, durationInFrames: 24 });
             const h = (b.v / 5400) * 580 * s;
@@ -153,22 +174,33 @@ const ShotHistory: React.FC = () => {
   const dur = S(4).duration;
   const p = clamp01(frame / dur);
   const years = [1951, 1986, 2007, 2012, 2018];
-  const idx = Math.min(years.length - 1, Math.floor(easeOutExpo(p) * years.length * 1.2));
+  const labels = ["牌照税开征", "车船使用税", "两税合并", "车船税法", "新能源免征"];
+  const idx = Math.min(years.length - 1, Math.floor(easeOutExpo(p) * years.length * 1.15));
   const cur = years[idx];
   return (
     <AbsoluteFill style={{ background: "#05080E", overflow: "hidden" }}>
-      <div style={{ position: "absolute", right: 80, top: 40, fontFamily: FONT_NUM, fontSize: 90, fontWeight: 700, color: "rgba(228,180,92,0.18)" }}>{cur}</div>
-      <div style={{ position: "absolute", left: 110, top: 260 }}>
+      {STORY.image ? <Img src={staticFile(STORY.image!)} style={{ position: "absolute", right: 0, top: 0, width: 900, height: "100%", objectFit: "cover", opacity: 0.18, filter: "grayscale(0.4)" }} /> : null}
+      <AbsoluteFill style={{ background: "linear-gradient(90deg, #05080E 40%, rgba(5,8,14,0.65) 70%, rgba(5,8,14,0.9))" }} />
+      <div style={{ position: "absolute", left: 110, top: 250 }}>
         <div style={{ fontFamily: FONT_SANS, fontSize: 22, letterSpacing: 6, color: COLORS.gold }}>一条线，70 年</div>
-        <div style={{ marginTop: 16, fontFamily: FONT_NUM, fontSize: 170, fontWeight: 700, color: "#F3D08A", lineHeight: 1 }}>{cur}</div>
-        <div style={{ marginTop: 10, fontFamily: FONT_SANS, fontSize: 54, fontWeight: 700, color: "#F7F2E7" }}>{["牌照税开征", "车船使用税", "两税合并", "车船税法", "新能源免征"][idx]}</div>
+        <div style={{ marginTop: 14, fontFamily: FONT_NUM, fontSize: 180, fontWeight: 700, color: "#F3D08A", lineHeight: 1, textShadow: "0 0 60px rgba(228,180,92,0.25)" }}>{cur}</div>
+        <div style={{ marginTop: 6, fontFamily: FONT_SANS, fontSize: 52, fontWeight: 700, color: "#F7F2E7" }}>{labels[idx]}</div>
+        <div style={{ marginTop: 20, display: "flex", gap: 12 }}>
+          {["税种沿革", "税率分档", "立法进程"].map((t) => <span key={t} style={{ padding: "8px 16px", border: "1px solid rgba(228,180,92,0.4)", color: COLORS.muted, fontFamily: FONT_SANS, fontSize: 17 }}>{t}</span>)}
+        </div>
       </div>
-      <div style={{ position: "absolute", left: 110, right: 110, bottom: 220, height: 3, background: "rgba(255,255,255,0.12)" }}>
+      <div style={{ position: "absolute", right: 90, top: 180, width: 560 }}>
+        {years.map((y, i) => (
+          <div key={y} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 10px", borderBottom: "1px solid rgba(255,255,255,0.08)", background: i === idx ? "rgba(228,180,92,0.10)" : "transparent", opacity: i <= idx ? 1 : 0.35 }}>
+            <span style={{ fontFamily: FONT_NUM, fontSize: 40, color: i === idx ? "#F3D08A" : COLORS.muted }}>{y}</span>
+            <span style={{ fontFamily: FONT_SANS, fontSize: 22, color: i === idx ? "#F7F2E7" : COLORS.dim }}>{labels[i]}</span>
+            <span style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.gold }}>{i === idx ? "▶" : ""}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ position: "absolute", left: 110, right: 110, bottom: 180, height: 3, background: "rgba(255,255,255,0.12)" }}>
         <div style={{ width: easeOutExpo(p) * 100 + "%", height: "100%", background: "linear-gradient(90deg, rgba(228,180,92,0.3), #E4B45C)", boxShadow: "0 0 30px rgba(228,180,92,0.8)" }} />
       </div>
-      {years.map((y, i) => (
-        <div key={y} style={{ position: "absolute", left: 110 + (i / (years.length - 1)) * (1700), bottom: 160, width: 2, height: 40, background: i <= idx ? COLORS.gold : "rgba(255,255,255,0.2)" }} />
-      ))}
       <Burst at={4} count={30} />
     </AbsoluteFill>
   );
@@ -192,6 +224,23 @@ const ShotData: React.FC = () => {
         </div>
       </div>
       <Burst at={0} count={50} />
+      {STORY.image ? <Img src={staticFile(STORY.image!)} style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.08, filter: "grayscale(0.5)" }} /> : null}
+      <div style={{ position: "absolute", left: 90, top: 200 }}>
+        {["1951 牌照税", "2007 两税合并", "2012 车船税法", "2018 新能源免征"].map((t, i) => (
+          <div key={t} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18, opacity: 0.45 + 0.15 * i }}>
+            <span style={{ width: 8, height: 8, background: COLORS.gold, transform: "rotate(45deg)" }} />
+            <span style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.muted }}>{t}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ position: "absolute", right: 90, top: 210, textAlign: "right" }}>
+        <div style={{ fontFamily: FONT_SANS, fontSize: 18, color: COLORS.gold, letterSpacing: 4 }}>地方税</div>
+        <div style={{ fontFamily: FONT_NUM, fontSize: 64, color: COLORS.goldSoft, marginTop: 4 }}>≈2.96<span style={{ fontSize: 22 }}> 亿/天</span></div>
+        <div style={{ fontFamily: FONT_SANS, fontSize: 16, color: COLORS.dim, marginTop: 2 }}>按 2025 年收入折算</div>
+        <div style={{ marginTop: 26, fontFamily: FONT_SANS, fontSize: 18, color: COLORS.muted, lineHeight: 1.9 }}>
+          乘用车 · 按排量<br />商用车 · 按整备质量<br />船舶 · 按净吨位
+        </div>
+      </div>
       <div style={{ position: "absolute", left: 110, bottom: 90, right: 110, display: "flex", justifyContent: "space-between", fontFamily: FONT_SANS, fontSize: 18, color: "rgba(255,255,255,0.35)" }}>
         <span>1951 牌照税</span><span>2007 合并</span><span>2012 立法</span><span>2025 数据</span>
       </div>

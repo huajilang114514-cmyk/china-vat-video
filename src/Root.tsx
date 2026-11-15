@@ -19,6 +19,7 @@ import { KineticChechuan } from "./taxstory/KineticChechuan";
 import { KineticYanye } from "./taxstory/KineticYanye";
 import { KineticFangchan } from "./taxstory/KineticFangchan";
 import { KineticQishui } from "./taxstory/KineticQishui";
+import { KineticQishui2 } from "./taxstory/KineticQishui2";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -99,6 +100,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TaxStory-chuanbo" component={TaxStory} defaultProps={{ storyId: "chuanbo" }} durationInFrames={storyDuration("chuanbo")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStoryDense-chechuan" component={DenseStory} defaultProps={{ storyId: "chechuan" }} durationInFrames={storyDuration("chechuan")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStoryKinetic-chechuan" component={KineticChechuan} durationInFrames={storyDuration("chechuan")} fps={30} width={1920} height={1080} />
+      <Composition id="TaxStoryKinetic-qishui2" component={KineticQishui2} durationInFrames={storyDuration("qishui")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStoryKinetic-qishui" component={KineticQishui} durationInFrames={storyDuration("qishui")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStoryKinetic-fangchan" component={KineticFangchan} durationInFrames={storyDuration("fangchan")} fps={30} width={1920} height={1080} />
       <Composition id="TaxStoryKinetic-yanye" component={KineticYanye} durationInFrames={storyDuration("yanye")} fps={30} width={1920} height={1080} />

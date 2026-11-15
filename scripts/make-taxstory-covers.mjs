@@ -28,6 +28,9 @@ body{font-family:"NotoSC","Microsoft YaHei",sans-serif;color:#F5EFE3;background:
 .chips{display:flex;gap:12px;flex-wrap:wrap}
 .chip{border:1px solid rgba(228,180,92,.45);background:rgba(228,180,92,.08);border-radius:999px;padding:9px 18px;color:#EBCB8B;font-size:20px;letter-spacing:1px}
 .brand{position:absolute;color:#8E97A8;font-size:17px;letter-spacing:4px}
+.topbar{position:absolute;left:70px;right:70px;top:34px;display:flex;justify-content:space-between;align-items:center;font-size:16px;letter-spacing:5px;color:#8E97A8}
+.topbar .b{display:flex;align-items:center;gap:10px;color:#E4B45C}
+.topbar .d{width:8px;height:8px;background:#E4B45C;transform:rotate(45deg)}
 .seal{position:absolute;border:3px solid rgba(196,71,58,.9);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#D25A4B;font-weight:700;transform:rotate(-7deg);background:rgba(10,16,26,.4)}
 `;
 
@@ -36,7 +39,7 @@ function html43(s) {
   .canvas{width:1440px;height:1080px}
   .hero{right:0;top:0;width:820px;height:1080px;clip-path:inset(0 0 0 8%)}
   .shade{position:absolute;inset:0;background:linear-gradient(90deg,#050A12 0%,rgba(5,10,18,.92) 30%,rgba(5,10,18,.35) 66%,rgba(5,10,18,.55) 100%)}
-  .main{position:absolute;left:80px;top:180px;width:700px}
+  .main{position:absolute;left:80px;top:200px;width:700px}
   .title{font-size:92px;margin-top:20px}
   .sub{font-size:26px;margin-top:22px}
   .chips{margin-top:30px}
@@ -46,6 +49,8 @@ function html43(s) {
   </style></head><body><div class="canvas">
   <div class="grid"></div>
   ${s.image ? `<div class="hero"><img src="file:///${ROOT}/public/${s.image}" /></div><div class="shade"></div>` : ""}
+  <div style="position:absolute;left:0;right:0;top:0;height:86px;background:linear-gradient(180deg,rgba(5,10,18,.92),rgba(5,10,18,0));pointer-events:none"></div>
+  <div class="topbar"><div class="b"><span class="d"></span><span>税种系列 · TAX HISTORY</span></div><div>起源 / 发展 / 原理</div></div>
   <div class="main">
     <div class="kicker"><span class="diamond"></span>${s.tax} · ${s.en}</div>
     <div class="title">${s.title.replace(s.tax, '<span class="gold">' + s.tax + "</span>")}</div>
@@ -63,7 +68,7 @@ function html34(s) {
   .canvas{width:1080px;height:1440px}
   .hero{left:0;top:0;width:1080px;height:720px}
   .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,10,18,.15) 0%,rgba(5,10,18,.4) 45%,#050A12 92%)}
-  .main{position:absolute;left:70px;top:760px;width:940px}
+  .main{position:absolute;left:70px;top:780px;width:940px}
   .title{font-size:88px;margin-top:18px}
   .sub{font-size:27px;margin-top:20px}
   .chips{margin-top:26px}

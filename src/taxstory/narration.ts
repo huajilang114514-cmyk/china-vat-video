@@ -1,31 +1,31 @@
 export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> = {
   "yanye-b1": {
     "audio": "tax-audio/yanye-b1.mp3",
-    "seconds": 4.464
+    "seconds": 3.576
   },
   "yanye-b2": {
     "audio": "tax-audio/yanye-b2.mp3",
-    "seconds": 6.384
+    "seconds": 4.944
   },
   "yanye-b3": {
     "audio": "tax-audio/yanye-b3.mp3",
-    "seconds": 6.312
+    "seconds": 3.192
   },
   "yanye-b4": {
     "audio": "tax-audio/yanye-b4.mp3",
-    "seconds": 6.96
+    "seconds": 3.84
   },
   "yanye-b5": {
     "audio": "tax-audio/yanye-b5.mp3",
-    "seconds": 6.24
+    "seconds": 4.872
   },
   "yanye-b6": {
     "audio": "tax-audio/yanye-b6.mp3",
-    "seconds": 6.84
+    "seconds": 4.128
   },
   "yanye-b7": {
     "audio": "tax-audio/yanye-b7.mp3",
-    "seconds": 3.648
+    "seconds": 4.752
   },
   "fangchan-b1": {
     "audio": "tax-audio/fangchan-b1.mp3",
@@ -346,5 +346,17 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   "chechuan-b10": {
     "audio": "tax-audio/chechuan-b10.mp3",
     "seconds": 2.88
+  },
+  "yanye-b8": {
+    "audio": "tax-audio/yanye-b8.mp3",
+    "seconds": 5.64
+  },
+  "yanye-b9": {
+    "audio": "tax-audio/yanye-b9.mp3",
+    "seconds": 8.352
+  },
+  "yanye-b10": {
+    "audio": "tax-audio/yanye-b10.mp3",
+    "seconds": 3.048
   }
 };

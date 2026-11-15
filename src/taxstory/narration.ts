@@ -29,31 +29,31 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   },
   "fangchan-b1": {
     "audio": "tax-audio/fangchan-b1.mp3",
-    "seconds": 5.16
+    "seconds": 4.296
   },
   "fangchan-b2": {
     "audio": "tax-audio/fangchan-b2.mp3",
-    "seconds": 6.72
+    "seconds": 3.864
   },
   "fangchan-b3": {
     "audio": "tax-audio/fangchan-b3.mp3",
-    "seconds": 5.784
+    "seconds": 4.08
   },
   "fangchan-b4": {
     "audio": "tax-audio/fangchan-b4.mp3",
-    "seconds": 7.248
+    "seconds": 4.632
   },
   "fangchan-b5": {
     "audio": "tax-audio/fangchan-b5.mp3",
-    "seconds": 6.816
+    "seconds": 4.464
   },
   "fangchan-b6": {
     "audio": "tax-audio/fangchan-b6.mp3",
-    "seconds": 6.504
+    "seconds": 4.296
   },
   "fangchan-b7": {
     "audio": "tax-audio/fangchan-b7.mp3",
-    "seconds": 4.032
+    "seconds": 5.664
   },
   "qishui-b1": {
     "audio": "tax-audio/qishui-b1.mp3",
@@ -358,5 +358,17 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   "yanye-b10": {
     "audio": "tax-audio/yanye-b10.mp3",
     "seconds": 3.048
+  },
+  "fangchan-b8": {
+    "audio": "tax-audio/fangchan-b8.mp3",
+    "seconds": 5.088
+  },
+  "fangchan-b9": {
+    "audio": "tax-audio/fangchan-b9.mp3",
+    "seconds": 9.048
+  },
+  "fangchan-b10": {
+    "audio": "tax-audio/fangchan-b10.mp3",
+    "seconds": 3.36
   }
 };

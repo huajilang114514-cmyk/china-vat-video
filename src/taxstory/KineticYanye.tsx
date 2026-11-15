@@ -111,7 +111,7 @@ const YEARS = [2006, 2017, 2018];
 const LABELS = ["暂行条例", "烟叶税法", "正式施行"];
 const ShotHistory: React.FC = () => {
   const frame = useCurrentFrame();
-  const dur = S(5).from - S(2).from;
+  const dur = S(5).duration;
   const p = clamp01(frame / dur);
   const idx = Math.min(2, Math.floor(easeOutExpo(p) * 3 * 1.15));
   return (
@@ -145,7 +145,7 @@ const ShotHistory: React.FC = () => {
 const ShotChart: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const dur = S(5).duration;
+  const dur = S(5).from - S(2).from;
   const p = clamp01(frame / (dur * 0.7));
   const grow = spring({ frame: frame - 4, fps, config: { damping: 16, stiffness: 90 }, durationInFrames: 40 });
   return (
@@ -337,8 +337,8 @@ export const KineticYanye: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: "#05080E" }}>
       <Sequence from={S(0).from} durationInFrames={S(0).duration}><ShotHook /></Sequence>
       <Sequence from={S(1).from} durationInFrames={S(1).duration}><Shot1951 /></Sequence>
-      <Sequence from={S(2).from} durationInFrames={S(5).from - S(2).from}><ShotHistory /></Sequence>
-      <Sequence from={S(5).from} durationInFrames={S(5).duration}><ShotChart /></Sequence>
+      <Sequence from={S(2).from} durationInFrames={S(5).from - S(2).from}><ShotChart /></Sequence>
+      <Sequence from={S(5).from} durationInFrames={S(5).duration}><ShotHistory /></Sequence>
       <Sequence from={S(6).from} durationInFrames={S(6).duration}><ShotDetail /></Sequence>
       <Sequence from={S(7).from} durationInFrames={S(7).duration}><ShotData /></Sequence>
       <Sequence from={S(8).from} durationInFrames={S(8).duration}><ShotRecap /></Sequence>

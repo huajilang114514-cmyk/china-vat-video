@@ -175,7 +175,7 @@ const ShotChart: React.FC = () => {
         })}
       </div>
       <div style={{ position: "absolute", left: 110, right: 110, bottom: 120, display: "flex", gap: 20 }}>
-        {["从价计征", "从租计征", "个人非营业免征"].map((x) => <span key={x} style={{ padding: "8px 18px", border: "1px solid rgba(228,180,92,0.35)", color: COLORS.muted, fontFamily: FONT_SANS, fontSize: 18 }}>{x}</span>)}
+        {["首套优惠", "二套分档", "法定 3%—5%"].map((x) => <span key={x} style={{ padding: "8px 18px", border: "1px solid rgba(228,180,92,0.35)", color: COLORS.muted, fontFamily: FONT_SANS, fontSize: 18 }}>{x}</span>)}
       </div>
     </AbsoluteFill>
   );

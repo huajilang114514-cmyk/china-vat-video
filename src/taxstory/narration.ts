@@ -57,31 +57,31 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   },
   "qishui-b1": {
     "audio": "tax-audio/qishui-b1.mp3",
-    "seconds": 3.96
+    "seconds": 2.808
   },
   "qishui-b2": {
     "audio": "tax-audio/qishui-b2.mp3",
-    "seconds": 4.848
+    "seconds": 4.392
   },
   "qishui-b3": {
     "audio": "tax-audio/qishui-b3.mp3",
-    "seconds": 5.664
+    "seconds": 4.872
   },
   "qishui-b4": {
     "audio": "tax-audio/qishui-b4.mp3",
-    "seconds": 6.024
+    "seconds": 2.664
   },
   "qishui-b5": {
     "audio": "tax-audio/qishui-b5.mp3",
-    "seconds": 6.192
+    "seconds": 4.704
   },
   "qishui-b6": {
     "audio": "tax-audio/qishui-b6.mp3",
-    "seconds": 4.416
+    "seconds": 5.928
   },
   "qishui-b7": {
     "audio": "tax-audio/qishui-b7.mp3",
-    "seconds": 3.288
+    "seconds": 3.792
   },
   "chechuan-b1": {
     "audio": "tax-audio/chechuan-b1.mp3",
@@ -370,5 +370,17 @@ export const TAX_NARRATION: Record<string, { audio: string; seconds: number }> =
   "fangchan-b10": {
     "audio": "tax-audio/fangchan-b10.mp3",
     "seconds": 3.36
+  },
+  "qishui-b8": {
+    "audio": "tax-audio/qishui-b8.mp3",
+    "seconds": 3.864
+  },
+  "qishui-b9": {
+    "audio": "tax-audio/qishui-b9.mp3",
+    "seconds": 9.552
+  },
+  "qishui-b10": {
+    "audio": "tax-audio/qishui-b10.mp3",
+    "seconds": 2.808
   }
 };
